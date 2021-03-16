@@ -61,7 +61,7 @@ public class Teste {
 			writer.write(sb.toString());
 		}
 		catch (FileNotFoundException e) {
-			System.out.println("Error");
+			System.out.println("Erro na abertura do Arquivo");
 		}
 	}
 
