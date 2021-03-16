@@ -59,6 +59,9 @@ public class Teste {
 			StringBuilder sb = new StringBuilder();
 			sb.append(emitter.getName()+"\n");
 			
+			/*
+			 * Percorrendo um foreach na lista de products e escrevendo no arquivo csv
+			 */
 			for(Product p: products) {
 				sb.append(p.getName()+";");
 				sb.append(p.getQuantity()+";");
