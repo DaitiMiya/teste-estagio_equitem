@@ -26,28 +26,35 @@ public class Teste {
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);
 		
-		NodeList key = doc.getElementsByTagName("chNFe");
+		NodeList key = doc.getElementsByTagName("chNFe"); //Filtrando as tags para encontrar a chave.
 		Element chave = (Element) key.item(0);
-		String chaveNotaFiscal = chave.getTextContent();
+		String chaveNotaFiscal = chave.getTextContent(); //Transformando o item da tag em string.
 
-		NodeList emit = doc.getElementsByTagName("emit");
+		NodeList emit = doc.getElementsByTagName("emit"); //Filtrando as tags para encontrar o emitente.
 		Element emissor = (Element) emit.item(0);
-		String nomeEmissor = emissor.getElementsByTagName("xNome").item(0).getTextContent();
-		Emitter emitter = new Emitter(nomeEmissor);
+		String nomeEmissor = emissor.getElementsByTagName("xNome").item(0).getTextContent(); //Transformando o item da tag em string.
+		Emitter emitter = new Emitter(nomeEmissor); //Criando um objeto do tipo emitter
 		
-		NodeList prod = doc.getElementsByTagName("prod");
-		List<Product> products = new ArrayList<>();
+		NodeList prod = doc.getElementsByTagName("prod"); //Filtrando as tags para encontrar os produtos.
+		List<Product> products = new ArrayList<>(); //Lista para adicionar os produtos do tipo Product.
 
 		for (int i = 0; i < prod.getLength(); i++) {
-			Element product = (Element) prod.item(i);
+			Element product = (Element) prod.item(i); //Percorrendo cada elemento da NodeList prod.
+			/*
+			 * Ao percorrer a lista de elementos produto, transformamos cada valor desejado em String.
+			 */
 			String nameProduct = product.getElementsByTagName("xProd").item(0).getTextContent();
 			String quantity = product.getElementsByTagName("qCom").item(0).getTextContent();
 			String value = product.getElementsByTagName("vUnCom").item(0).getTextContent();
 			
 			Product produto = new Product(nameProduct, quantity, value);
-			products.add(produto);
+			products.add(produto); //Cada produto com as informações desejadas são inseridas na lista products.
 		}
 		
+		/*
+		 * Este bloco e responsavel pela criacao de um arquivo .csv com o nome chaveNotaFiscal, 
+		 * sendo utilizado o Printwriter e StringBuilder para escrita desse novo arquivo.
+		 */
 		try(PrintWriter writer = new PrintWriter(new File(chaveNotaFiscal+".csv"))){
 			StringBuilder sb = new StringBuilder();
 			sb.append(emitter.getName()+"\n");
