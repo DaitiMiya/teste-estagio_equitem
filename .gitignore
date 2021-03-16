@@ -7,11 +7,17 @@
 # BlueJ files
 *.ctxt
 
-.classpath
+#Para todo path
+*.classpath
 
-.project
+#Para todo Project
+*.project
 
-.settings
+#Para todo settings
+*.settings
+
+#Pasta bin
+bin/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
