@@ -15,13 +15,21 @@ import org.w3c.dom.NodeList;
 
 import entities.Emitter;
 import entities.Product;
+import utilities.ListaDiretorio;
 
 public class Teste {
-	
-	
+
 	public static void main(String[] args) throws Exception {
-		File fXmlFile = new File(
-				"src/35200367647412000199550020002631221100130511_678a11ce7b1634f8f98512759dbf16c7af51891f.xml");
+		File raiz = new File("C:\\trabs\\ws-eclipse\\teste_equitem\\src");
+		ListaDiretorio lista = new ListaDiretorio();
+		List<File> listFile = lista.listaDiretorio(raiz);
+		
+		/*
+		 * Com a lista do tipo File encontrada, percorremos cada arquivo .xml para extrair os dados necessarios
+		 * e criar os arquivos .csv.
+		 */
+		
+		for(File fXmlFile: listFile) {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);
@@ -60,7 +68,7 @@ public class Teste {
 			sb.append(emitter.getName()+"\n");
 			
 			/*
-			 * Percorrendo um foreach na lista de products e escrevendo no arquivo csv
+			 * Percorrendo um foreach na lista de products e escrevendo no arquivo csv.
 			 */
 			for(Product p: products) {
 				sb.append(p.getName()+";");
@@ -73,6 +81,6 @@ public class Teste {
 		catch (FileNotFoundException e) {
 			System.out.println("Erro na abertura do Arquivo");
 		}
-	}
-
+	 }
+   }
 }
