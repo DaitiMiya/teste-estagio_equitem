@@ -21,7 +21,7 @@ public class Teste {
 	
 	public static void main(String[] args) throws Exception {
 		File fXmlFile = new File(
-				"src/35200367647412000199550020002631381100247516_fc2464f653494493973499f9e8db95622d8315c2.xml");
+				"src/35200367647412000199550020002631221100130511_678a11ce7b1634f8f98512759dbf16c7af51891f.xml");
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(fXmlFile);
